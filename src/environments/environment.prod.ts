@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendBaseUrl: 'http://localhost:8080/api'
+  backendBaseUrl: 'http://ww8ckowcks4k080kk804k0wg.158.180.235.156.sslip.io:8081/api'
 };
