@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://ww8ckowcks4k080kk804k0wg.158.180.235.156.sslip.io:8081",
+    "target": "http://ww8ckowcks4k080kk804k0wg.158.180.235.156.sslip.io",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
