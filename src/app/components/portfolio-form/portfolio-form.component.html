@@ -1,0 +1,53 @@
+<div class="custom-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>{{ formTitle }}</h2>
+      <button type="button" class="close-button" (click)="onCancel()">×</button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <div class="input-container">
+            <input type="text" id="title" [(ngModel)]="portfolio.title" name="title" required placeholder="Enter project title">
+            <span class="icon">📝</span>
+          </div>
+          <small class="hint">Give your project a descriptive title</small>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <div class="input-container">
+            <textarea id="description" [(ngModel)]="portfolio.description" name="description" placeholder="Describe your project"></textarea>
+            <span class="icon">📄</span>
+          </div>
+          <small class="hint">Provide details about your project</small>
+        </div>
+
+        <div class="form-group">
+          <label for="imageurl">Image URL</label>
+          <div class="input-container">
+            <input type="text" id="imageurl" [(ngModel)]="portfolio.imageUrl" name="imageurl" placeholder="https://example.com/image.jpg">
+            <span class="icon">🖼️</span>
+          </div>
+          <small class="hint">Link to a showcase image of your project</small>
+        </div>
+
+        <div class="form-group">
+          <label for="projecturl">Project URL</label>
+          <div class="input-container">
+            <input type="text" id="projecturl" [(ngModel)]="portfolio.projectUrl" name="projecturl" placeholder="https://example.com/project">
+            <span class="icon">🔗</span>
+          </div>
+          <small class="hint">Link to your live project or repository</small>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-backdrop" (click)="onCancel()"></div>
+</div>

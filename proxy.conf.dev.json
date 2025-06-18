@@ -1,0 +1,14 @@
+{
+  "/api": {
+    "target": "https://localhost:7191",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "ssl": {
+      "rejectUnauthorized": false
+    },
+    "pathRewrite": {
+      "^/api": "/api"
+    }
+  }
+}

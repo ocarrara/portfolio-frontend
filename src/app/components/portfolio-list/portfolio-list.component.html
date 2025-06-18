@@ -1,0 +1,45 @@
+<div class="list-header">
+  <h2>My Portfolio Projects</h2>
+  <button mat-icon-button color="primary" aria-label="Refresh list" (click)="refreshPortfolios()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="portfolios && portfolios.length > 0" class="portfolio-list">
+  <div *ngFor="let portfolio of portfolios" class="portfolio-card">
+    <div class="card-image"
+         [style.background-image]="'url(' + getImageUrl(portfolio) + ')'"
+         (click)="onViewClick(portfolio)"
+         [style.cursor]="'pointer'"
+         matTooltip="Click to view details">
+      <div class="overlay"></div>
+      <div class="image-loader" *ngIf="loadingImages[portfolio.id]">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    </div>
+    <div class="card-content">
+      <h3 class="card-title">{{ portfolio.title }}</h3>
+      <p class="card-description">{{ portfolio.description || 'No description provided' }}</p>
+    </div>
+    <div class="card-actions">
+      <button mat-icon-button color="primary" aria-label="Edit project" matTooltip="Edit project" (click)="onEditClick(portfolio)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Delete project" matTooltip="Delete project" (click)="onDeleteClick(portfolio)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <a mat-icon-button color="accent" [href]="portfolio.projectUrl" target="_blank" aria-label="View project" matTooltip="View project" *ngIf="portfolio.projectUrl">
+        <mat-icon>open_in_new</mat-icon>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!portfolios || portfolios.length === 0" class="empty-state">
+  <mat-icon>folder_open</mat-icon>
+  <h3>No projects yet</h3>
+  <p>Create your first portfolio project using the form</p>
+  <button mat-raised-button color="primary">
+    <mat-icon>add</mat-icon> Add Project
+  </button>
+</div>

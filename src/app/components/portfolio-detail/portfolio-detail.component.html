@@ -1,0 +1,44 @@
+<div class="custom-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>{{ portfolio?.title || 'Loading...' }}</h2>
+      <button type="button" class="close-button" (click)="onClose()">×</button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="loading" class="loading-container">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p>Loading portfolio details...</p>
+      </div>
+
+      <div *ngIf="error" class="error-container">
+        <mat-icon color="warn">error</mat-icon>
+        <p>Error loading portfolio details. Please try again.</p>
+        <button mat-raised-button color="primary" (click)="loadPortfolio(portfolioId!)">Retry</button>
+      </div>
+
+      <div *ngIf="portfolio && !loading && !error" class="portfolio-detail">
+        <div class="detail-image" [style.background-image]="'url(' + getImageUrl() + ')'">
+          <div class="overlay"></div>
+        </div>
+
+        <div class="detail-content">
+          <h3 class="detail-title">{{ portfolio.title }}</h3>
+          <p class="detail-description">{{ portfolio.description || 'No description provided' }}</p>
+
+          <div class="detail-meta" *ngIf="portfolio.projectUrl">
+            <h4>Project Link</h4>
+            <a [href]="portfolio.projectUrl" target="_blank" class="project-link">
+              <mat-icon>open_in_new</mat-icon>
+              <span>{{ portfolio.projectUrl }}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <button mat-raised-button color="primary" (click)="onClose()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop" (click)="onClose()"></div>
+</div>
