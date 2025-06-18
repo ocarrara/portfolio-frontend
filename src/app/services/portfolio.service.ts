@@ -30,22 +30,27 @@ export class PortfolioService {
   }
 
   getAll(): Observable<PortfolioItem[]> {
+    console.log('Getting all portfolios from: ', this.baseUrl, '...');
     return this.http.get<PortfolioItem[]>(this.baseUrl);
   }
 
   get(id: number): Observable<PortfolioItem> {
+    console.log('Getting portfolio with ID:', id, 'from:', this.baseUrl, '...');
     return this.http.get<PortfolioItem>(`${this.baseUrl}/${id}`);
   }
 
   create(item: Partial<PortfolioItem>): Observable<PortfolioItem> {
+    console.log('Creating portfolio with:', item, '...');
     return this.http.post<PortfolioItem>(this.baseUrl, item);
   }
 
   update(id: number, item: PortfolioItem): Observable<void> {
+    console.log('Updating portfolio with ID:', id, 'to:', item, '...');
     return this.http.put<void>(`${this.baseUrl}/${id}`, item);
   }
 
   delete(id: number): Observable<void> {
+    console.log('Deleting portfolio with ID:', id, '...');
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 }
